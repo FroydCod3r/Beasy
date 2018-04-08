@@ -19,7 +19,7 @@ public class Signup extends AppCompatActivity {
     Button btn_sign;
 
 
-    private  static final String REGISTER_URL="http://ebeasy.com.br/";
+    private  static final String REGISTER_URL="http://ebeasy.com.br";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
