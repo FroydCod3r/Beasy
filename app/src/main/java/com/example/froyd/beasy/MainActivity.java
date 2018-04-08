@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
+                mTextView.setText("nao funcionou :( ");
             }
         });
 
