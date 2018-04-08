@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        final TextView mTextView = (TextView) findViewById(R.id.textView);
+        final TextView mTextView = (TextView) findViewById(R.id.login_view);
 // ...
 
 // Instantiate the RequestQueue.
