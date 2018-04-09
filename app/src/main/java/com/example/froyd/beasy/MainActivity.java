@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         final TextView mTextView = (TextView) findViewById(R.id.json_view);
-
         final Button button = (Button)findViewById(R.id.button);
 
 
