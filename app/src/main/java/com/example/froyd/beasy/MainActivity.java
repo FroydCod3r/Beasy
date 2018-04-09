@@ -1,7 +1,9 @@
 package com.example.froyd.beasy;
 
+        import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Log;
         import android.widget.TextView;
 
         import com.android.volley.Request;
@@ -11,40 +13,85 @@ package com.example.froyd.beasy;
         import com.android.volley.toolbox.StringRequest;
         import com.android.volley.toolbox.Volley;
 
+        import java.util.HashMap;
+        import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView (R.layout.activity_main ) ;
 
-
-
-        final TextView mTextView = (TextView) findViewById(R.id.json_view);
-// ...
-
-// Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://ebeasy.com.br/mysqlbeasy/login.php?login=froyd&senha=123";
+        final TextView mTextView = (TextView) findViewById(R.id.json_view);
 
-// Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
+
+
+
+
+
+
+        String url = "http://httpbin.org/post";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, "http://ebeasy.com.br/mysqlbeasy/login.php",
+
+                new Response.Listener<String>()
+                {
+
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        mTextView.setText("Response is: "+ response.toString());
+                        mTextView.setText(response);
                     }
-                }, new Response.ErrorListener() {
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        //Log.d("Error.Response", onErrorResponse());
+                        mTextView.setText("erro");
+                    }
+                }
+        ) {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                mTextView.setText("nao funcionou :( ");
-            }
-        });
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("login", "froyd");
+                params.put("senha", "123");
 
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
+
+
+
+        Intent intent = new Intent(this, home.class);
+       // startActivity(intent);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
