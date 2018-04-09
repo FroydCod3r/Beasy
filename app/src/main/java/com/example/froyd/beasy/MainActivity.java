@@ -4,6 +4,8 @@ package com.example.froyd.beasy;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.util.Log;
+        import android.view.View;
+        import android.widget.Button;
         import android.widget.TextView;
 
         import com.android.volley.Request;
@@ -16,6 +18,8 @@ package com.example.froyd.beasy;
         import java.util.HashMap;
         import java.util.Map;
 
+      //  import sun.applet.Main;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         final TextView mTextView = (TextView) findViewById(R.id.json_view);
 
-
+        final Button button = (Button)findViewById(R.id.button);
 
 
 
@@ -42,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         mTextView.setText(response);
-
                     }
                 },
                 new Response.ErrorListener()
@@ -68,10 +71,17 @@ public class MainActivity extends AppCompatActivity {
         };
         queue.add(postRequest);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, home.class);
+                 startActivity(intent);
 
+            }
+        });
 
-        Intent intent = new Intent(this, home.class);
-        startActivity(intent);
+       // Intent intent = new Intent(this, home.class);
+       // startActivity(intent);
 
 
 
