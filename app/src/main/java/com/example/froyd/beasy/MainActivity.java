@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         mTextView.setText(response);
+
                     }
                 },
                 new Response.ErrorListener()
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, home.class);
-       // startActivity(intent);
+        startActivity(intent);
 
 
 
