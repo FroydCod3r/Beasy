@@ -1,5 +1,6 @@
 package com.example.froyd.beasy;
 
+        import android.app.Activity;
         import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
@@ -34,104 +35,99 @@ package com.example.froyd.beasy;
 
 public class MainActivity extends AppCompatActivity {
 
-    final EditText login_input = (EditText)findViewById(R.id.login_edit);
-    final EditText pass_input = (EditText)findViewById(R.id.senha_edit);
-    Intent intent = new Intent(this, home.class);
+
+    //Intent intent = new Intent(this, home.class);
 
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
 
         setContentView (R.layout.activity_main ) ;
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        final TextView mTextView = (TextView) findViewById(R.id.json_view);
+
+
         final Button button = (Button)findViewById(R.id.button);
 
    //     final EditText login_input = (EditText)findViewById(R.id.login_edit);
     //    final EditText pass_input = (EditText)findViewById(R.id.senha_edit);
 
 
+        final TextView mTextView = (TextView) findViewById(R.id.json_view);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
-
-
-
-        String url = "http://httpbin.org/post";
-        StringRequest postRequest = new StringRequest(Request.Method.POST, "http://ebeasy.com.br/mysqlbeasy/login.php",
-
-                new Response.Listener<String>()
-                {
-
-                    @Override
-                    public void onResponse(String response) {
-                        mTextView.setText(response);
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        //Log.d("Error.Response", onErrorResponse());
-                        mTextView.setText("erro");
-                    }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("login", "froyd");
-                params.put("senha", "123");
-
-
-                return params;
-            }
-        };
-        queue.add(postRequest);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Login();
-               // Intent intent = new Intent(MainActivity.this, home.class);
+
+
+
+
+
+                String url = "http://httpbin.org/post";
+                StringRequest postRequest = new StringRequest(Request.Method.POST, "http://ebeasy.com.br/mysqlbeasy/login.php",
+
+                        new Response.Listener<String>()
+                        {
+
+                            @Override
+                            public void onResponse(String response) {
+                                mTextView.setText(response);
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                //Log.d("Error.Response", onErrorResponse());
+                                mTextView.setText("erro");
+
+                                //  Intent intent = new Intent(MainActivity.this, home.class);
+                                //startActivity(intent);
+                            }
+                        }
+                ) {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String>  params = new HashMap<String, String>();
+                        params.put("login", "froyd");
+                        params.put("senha", "123");
+
+
+                        return params;
+                    }
+                };
+                queue.add(postRequest);
+
+
+
+
+
+
+
+                // Intent intent = new Intent(MainActivity.this, home.class);
                 // startActivity(intent);
 
             }
         });
 
+
     }
 
-    public void Login(){
 
-        String url = "http://ebeasy.com.br/mysqlbeasy/login.php";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.trim().equals("1")){
 
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(), "Deu ruim no login", Toast.LENGTH_LONG).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Deu ruim no login" + error.toString(), Toast.LENGTH_LONG).show();
-            }
-        })  {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
 
-                Map<String, String> params = new HashMap<>();
-                params.put("login_input", login_input.getText().toString().trim());
-                params.put("pass_input", pass_input.getText().toString().trim());
 
-                return super.getParams();
-            }
-        };
-        requestQueue.add(stringRequest);
+
+
+
+
+
+
     }
 
-}
+
+
