@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     final EditText login_input = (EditText)findViewById(R.id.login_edit);
     final EditText pass_input = (EditText)findViewById(R.id.senha_edit);
+    Intent intent = new Intent(this, home.class);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if (response.trim().equals("1")){
-                    Intent intent = new Intent(this, home.class);
+
                     startActivity(intent);
                 }else {
                     Toast.makeText(getApplicationContext(), "Deu ruim no login", Toast.LENGTH_LONG).show();
