@@ -6,8 +6,11 @@ package com.example.froyd.beasy;
         import android.util.Log;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.EditText;
         import android.widget.TextView;
+        import android.widget.Toast;
 
+        import com.android.volley.AuthFailureError;
         import com.android.volley.Request;
         import com.android.volley.RequestQueue;
         import com.android.volley.Response;
@@ -15,13 +18,24 @@ package com.example.froyd.beasy;
         import com.android.volley.toolbox.StringRequest;
         import com.android.volley.toolbox.Volley;
 
+//        import org.omg.CORBA.PUBLIC_MEMBER;
+
         import java.util.HashMap;
         import java.util.Map;
 
-      //  import sun.applet.Main;
+//        import javax.swing.text.PlainDocument;
+///      import javax.swing.text.PlainView;
+//        import javax.xml.soap.Text;
+
+//        import sun.net.www.content.text.PlainTextInputStream;
+
+//  import sun.applet.Main;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    final EditText login_input = (EditText)findViewById(R.id.login_edit);
+    final EditText pass_input = (EditText)findViewById(R.id.senha_edit);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         final TextView mTextView = (TextView) findViewById(R.id.json_view);
         final Button button = (Button)findViewById(R.id.button);
+
+   //     final EditText login_input = (EditText)findViewById(R.id.login_edit);
+    //    final EditText pass_input = (EditText)findViewById(R.id.senha_edit);
+
 
 
 
@@ -73,41 +91,46 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, home.class);
-                 startActivity(intent);
+                Login();
+               // Intent intent = new Intent(MainActivity.this, home.class);
+                // startActivity(intent);
 
             }
         });
 
-       // Intent intent = new Intent(this, home.class);
-       // startActivity(intent);
+    }
 
+    public void Login(){
 
+        String url = "http://ebeasy.com.br/mysqlbeasy/login.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.trim().equals("1")){
+                    Intent intent = new Intent(this, home.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Deu ruim no login", Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Deu ruim no login" + error.toString(), Toast.LENGTH_LONG).show();
+            }
+        })  {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
 
+                Map<String, String> params = new HashMap<>();
+                params.put("login_input", login_input.getText().toString().trim());
+                params.put("pass_input", pass_input.getText().toString().trim());
 
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                return super.getParams();
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 
 }
