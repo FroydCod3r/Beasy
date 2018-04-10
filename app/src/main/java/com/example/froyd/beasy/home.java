@@ -17,8 +17,6 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-        Log.d("SOMETHING", "asdasd");
-
 
 
 
