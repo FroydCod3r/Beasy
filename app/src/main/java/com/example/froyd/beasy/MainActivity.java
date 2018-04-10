@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                 mTextView.setText("erro");
 
                                 //  Intent intent = new Intent(MainActivity.this, home.class);
-                                //startActivity(intent);
+                                ///startActivity(intent);
                             }
                         }
                 ) {
