@@ -24,11 +24,13 @@ package com.example.froyd.beasy;
         import java.util.HashMap;
         import java.util.Map;
 
-//        import javax.swing.text.PlainDocument;
-///      import javax.swing.text.PlainView;
-//        import javax.xml.soap.Text;
+    //    import static sun.text.bidi.BidiBase.R;
 
-//        import sun.net.www.content.text.PlainTextInputStream;
+   //     import javax.swing.text.PlainDocument;
+    // import javax.swing.text.PlainView;
+     //  import javax.xml.soap.Text;
+
+       // import sun.net.www.content.text.PlainTextInputStream;
 
 //  import sun.applet.Main;
 
@@ -56,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         final RequestQueue queue = Volley.newRequestQueue(this);
         final Intent intent = new Intent(this, home.class);
 
-
+        final EditText login_input = (EditText)findViewById(R.id.login_edit);
+        final EditText senha_input = (EditText)findViewById(R.id.senha_edit);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +79,12 @@ public class MainActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 mTextView.setText(response);
 
+                                if (response.trim().equals("1")){
+                                    startActivity(intent);
+                                }else{
+                                    mTextView.setText("Erro no login");
+                                }
 
-                                startActivity(intent);
 
 
 
@@ -99,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
                     protected Map<String, String> getParams()
                     {
                         Map<String, String>  params = new HashMap<String, String>();
-                        params.put("login", "froyd");
-                        params.put("senha", "123");
+                        params.put("login", login_input.getText().toString().trim());
+                        params.put("senha", senha_input.getText().toString().trim());
 
 
                         return params;
