@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView mTextView = (TextView) findViewById(R.id.json_view);
         final RequestQueue queue = Volley.newRequestQueue(this);
-        final Intent intent = new Intent(this, home.class);
+        final Intent intent = new Intent(this, maps.class);
+        startActivity(intent);
 
         final EditText login_input = (EditText)findViewById(R.id.login_edit);
         final EditText senha_input = (EditText)findViewById(R.id.senha_edit);
