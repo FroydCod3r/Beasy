@@ -32,7 +32,7 @@
             android:name=".home"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".maps"></activity>
+        <activity android:name=".maps" />
     </application>
 
 </manifest>
