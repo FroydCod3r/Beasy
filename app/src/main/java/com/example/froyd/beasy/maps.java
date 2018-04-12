@@ -22,22 +22,41 @@ public class maps extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_maps);
 
 
+        
+
+
+        carregarmapa();
+    }
+
+
+
+
+    public void carregarmapa() {
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap map) {
+
+                LatLng oficina1 = new LatLng(-25.443150, -49.238243);
+                map.addMarker(new MarkerOptions().position(oficina1).title("Oficina do jailson"));
+                map.moveCamera(CameraUpdateFactory.newLatLng(oficina1));
+                map.setMinZoomPreference(14.0f);
+                map.setMaxZoomPreference(16.0f);
+
+            }
+        });
+
+
+
 
     }
+
+
     @Override
-    public void onMapReady(GoogleMap map) {
-        LatLng oficina1 = new LatLng(-25.443150, -49.238243);
-        map.addMarker(new MarkerOptions().position(oficina1).title("Oficina do jailson"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(oficina1));
-        map.setMinZoomPreference(14.0f);
-        map.setMaxZoomPreference(16.0f);
-    }
-
-
-
+    public void onMapReady(GoogleMap googleMap) {
 
     }
+}
 
