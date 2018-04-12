@@ -51,46 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        try {
-            JSONObject j = new JSONObject("{\n" +
-                    "  \"1\": {\n" +
-                    "    \"titulo\" : \"oficina do Leo\",\n" +
-                    "    \"lat\": \"-3.0162625\",\n" +
-                    "    \"lng\": \"-59.9966521\"\n" +
-                    "  },\n" +
-                    "  \"2\": {\n" +
-                    "    \"titulo\" : \"oficina do Jean\",\n" +
-                    "    \"lat\": \"-3.0046582\",\n" +
-                    "    \"lng\": \"-60.0037182\"\n" +
-                    "  },\n" +
-                    "  \"3\": {\n" +
-                    "    \"titulo\" : \"oficiana do Henrique\",\n" +
-                    "    \"lat\": \"-3.0199969\",\n" +
-                    "    \"lng\": \"-60.1633112\"\n" +
-                    "  }\n" +
-                    "\n" +
-                    "}");
-
-
-                    JSONObject bloco = j.getJSONObject("1");
-
-            String titulo = bloco.getString("titulo");
-
-            Log.d("testeee", titulo);
-
-
-
-
-
-
-        } catch (JSONException e) {
-            Log.d("testeee", "deu erro parça");
-        }
-
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+
 
 
 
@@ -108,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
 
 
         if (mLocationPermissionGranted) {
@@ -184,24 +150,27 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == 1234) {
-            if (permissions.length == 1 &&
-                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1234: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    final Intent intent = new Intent(this, maps.class);
+                    finish();
+                    startActivity(intent);
 
-                Intent intent = new Intent(this, maps.class);
-                startActivity(intent);
-                mLocationPermissionGranted = true;
+                } else {
+
+                    finish();
+                }
+                return;
             }
 
 
-
-            } else {
-            Intent intent = new Intent(this, maps.class);
-            startActivity(intent);
-            }
         }
+    }
 
 }
 
