@@ -33,6 +33,7 @@
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".maps" />
+        <activity android:name=".Oficina"></activity>
     </application>
 
 </manifest>
