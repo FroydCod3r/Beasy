@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
             final TextView mTextView = (TextView) findViewById(R.id.json_view);
             final RequestQueue queue = Volley.newRequestQueue(this);
-            final Intent intent = new Intent(this, Oficina.class);
+            final Intent intent = new Intent(this, cardpneu.class);
             startActivity(intent);
 
             final EditText login_input = (EditText) findViewById(R.id.login_edit);

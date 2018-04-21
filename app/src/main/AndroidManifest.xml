@@ -32,7 +32,8 @@
             android:name=".home"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Oficina"></activity>
+        <activity android:name=".Oficina" />
+        <activity android:name=".cardpneu"></activity>
     </application>
 
 </manifest>
