@@ -22,79 +22,86 @@
 
             <ImageView
                 android:id="@+id/imageView16"
-                android:layout_width="409dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView15"
                 app:srcCompat="@drawable/pneunove" />
 
             <ImageView
                 android:id="@+id/imageView15"
-                android:layout_width="391dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView14"
                 app:srcCompat="@drawable/pneuoito" />
 
             <ImageView
                 android:id="@+id/imageView14"
-                android:layout_width="389dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView13"
                 app:srcCompat="@drawable/pneusete" />
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="380dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView12"
                 app:srcCompat="@drawable/pneuseis" />
 
             <ImageView
                 android:id="@+id/imageView12"
-                android:layout_width="381dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:srcCompat="@drawable/pneucinco" />
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="390dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:srcCompat="@drawable/pneuquatro" />
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="381dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintStart_toEndOf="@+id/imageView19"
                 app:srcCompat="@drawable/pneutres" />
 
             <ImageView
                 android:id="@+id/imageView19"
-                android:layout_width="401dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -105,8 +112,10 @@
 
             <ImageView
                 android:id="@+id/imageView18"
-                android:layout_width="378dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:adjustViewBounds="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
